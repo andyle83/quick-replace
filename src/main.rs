@@ -4,7 +4,7 @@ use std::fs;
 
 fn main() {
     let args = parse_args();
-    println!("{:?}", args)
+    println!("{:?}", args);
 
     // read file
     let data = match fs::read_to_string(&args.fileNameInput) {
@@ -17,7 +17,7 @@ fn main() {
 
     // write file
     match fs::write(&args.fileNameOutput, &data) {
-        OK(_) => {},
+        Ok(_) => {},
         Err(e) => {
             eprintln!("{} failed to write to file '{}': {:?}", "Error".red().bold(), args.fileNameOutput, e);
             std::process::exit(1);
